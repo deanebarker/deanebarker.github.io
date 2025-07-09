@@ -66,13 +66,7 @@
     );
     button.classList.add("social-button", "light", "no-styles");
     button.appendHTML(`
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"
-                stroke-linecap="round" stroke-linejoin="round" class="feather feather-repeat">
-                <polyline points="17 1 21 5 17 9" />
-                <path d="M3 11V9a4 4 0 0 1 4-4h14" />
-                <polyline points="7 23 3 19 7 15" />
-                <path d="M21 13v2a4 4 0 0 1-4 4H3" />
-            </svg>
+            <span aria-hidden="true" class="we-icon css-1ccn5tk-IconStyled e19il6tt0">u</span>
             <span>${BUTTON_NAME}</span>
         `);
 
@@ -186,38 +180,38 @@
     inner.showModal();
 
     // Now we'll test for permissions
-    var thisPost = await repostDataManager.getPost(
-      e.target.closest("button").getAttribute("data-post-id")
-    );
-    var thisChannelAccessors =
-      (await repostDataManager
-        .getChannel(thisPost.channelID)
-        .accessors?.groups?.data?.map((g) => g.id)) ?? [];
+    // var thisPost = await repostDataManager.getPost(
+    //   e.target.closest("button").getAttribute("data-post-id")
+    // );
+    // var thisChannelAccessors =
+    //   (await repostDataManager
+    //     .getChannel(thisPost.channelID)
+    //     .accessors?.groups?.data?.map((g) => g.id)) ?? [];
 
-    console.log("Repost: This post's accessors", thisChannelAccessors);
+    // console.log("Repost: This post's accessors", thisChannelAccessors);
 
-    for (const channel of channels) {
-      var channelData = await repostDataManager.getChannel(channel.id);
+    // for (const channel of channels) {
+    //   var channelData = await repostDataManager.getChannel(channel.id);
 
-      if (channelData?.accessors?.groups?.data) {
-        // Do we even have accessors?
-        var channelContainer = document.getElementById(
-          "channel-container-" + channel.id
-        );
+    //   if (channelData?.accessors?.groups?.data) {
+    //     // Do we even have accessors?
+    //     var channelContainer = document.getElementById(
+    //       "channel-container-" + channel.id
+    //     );
 
-        var accessors = channelData.accessors.groups.data.map((g) => g.id);
-        console.log("Repost: Channel accessors", accessors);
-        if (!accessors.some((i) => thisChannelAccessors.includes(i))) {
-          // This channel has defined accessors, and none of them include any of this channel's accessors
-          channelContainer.classList.add("danger");
-        }
+    //     var accessors = channelData.accessors.groups.data.map((g) => g.id);
+    //     console.log("Repost: Channel accessors", accessors);
+    //     if (!accessors.some((i) => thisChannelAccessors.includes(i))) {
+    //       // This channel has defined accessors, and none of them include any of this channel's accessors
+    //       channelContainer.classList.add("danger");
+    //     }
 
-        if (accessors.length > thisChannelAccessors.length) {
-          // This channel has more accessors than the original channel
-          channelContainer.classList.add("warning");
-        }
-      }
-    }
+    //     if (accessors.length > thisChannelAccessors.length) {
+    //       // This channel has more accessors than the original channel
+    //       channelContainer.classList.add("warning");
+    //     }
+    //   }
+    // }
   }
 
   async function repost(e) {
