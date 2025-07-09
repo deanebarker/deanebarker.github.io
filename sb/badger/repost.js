@@ -66,7 +66,7 @@
     );
     button.classList.add("social-button", "light", "no-styles");
     button.appendHTML(`
-            <span aria-hidden="true" class="we-icon css-1ccn5tk-IconStyled e19il6tt0">u</span>
+            <span aria-hidden="true" class="we-icon css-1ccn5tk-IconStyled e19il6tt0" style="order: 3; width: auto; margin: 0;">u</span>
             <span>${BUTTON_NAME}</span>
         `);
 
