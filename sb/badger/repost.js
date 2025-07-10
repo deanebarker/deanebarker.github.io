@@ -64,7 +64,7 @@
       "data-post-id",
       element.closest("article").getAttribute("data-post-id")
     );
-    button.setAttribute("style", " style=\"order: 3; width: auto; margin: 0;\"");
+    button.setAttribute("style", "order: 3; width: auto; margin: 0;");
     button.classList.add("social-button", "light", "no-styles");
     button.appendHTML(`
             <span aria-hidden="true" class="we-icon css-1ccn5tk-IconStyled e19il6tt0">u</span>
