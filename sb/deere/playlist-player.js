@@ -9135,7 +9135,6 @@
         (e = -1 !== t && t + 1 < l.length ? l[t + 1] : null), v(e);
       },
       v = (e) => {
-        y();
         var n,
           t = u.current;
         (t.src = e.url),
