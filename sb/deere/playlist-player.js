@@ -9233,8 +9233,7 @@
               new Date(e.published).getTime() - new Date(n.published).getTime()
           ),
             a(l),
-            console.log("Playlist: ", l),
-            v(l[0]);
+            console.log("Playlist: ", l);
         }
       }, []),
       r.createElement(
