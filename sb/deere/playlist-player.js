@@ -9123,42 +9123,43 @@
       d = (0, r.useRef)(null),
       p = (0, r.useRef)(null);
     let [m, h] = (0, r.useState)(0);
-    const g = (e) => {
-        u.current &&
-          ((u.current.playbackRate = u.current.playbackRate + e), v());
+    const g = () => {
+        const e = u.current;
+        if (e.duration && p.current) {
+          const n = Math.floor(e.duration / 60),
+            t = Math.floor(e.duration % 60);
+          p.current.innerText = `${n}:${t.toString().padStart(2, "0")}`;
+        }
       },
-      v = () => {
+      v = (e) => {
         u.current &&
-          (c.current.innerText =
-            "(" + u.current.playbackRate.toFixed(1) + "x)");
+          ((u.current.playbackRate = u.current.playbackRate + e), y());
       },
       y = () => {
+        u.current &&
+          (c.current.innerText = u.current.playbackRate.toFixed(1) + "x");
+      },
+      b = () => {
         var e,
           n = u.current.src,
           t = l.findIndex((e) => e.url === n);
-        (e = -1 !== t && t + 1 < l.length ? l[t + 1] : null), b(e);
+        (e = -1 !== t && t + 1 < l.length ? l[t + 1] : null), k(e);
       },
-      b = (e) => {
+      k = (e) => {
         const n = u.current;
         if (!n) return;
         (n.src = e.url),
           i.current && (i.current.innerHTML = '"' + e.title + '"'),
-          n.addEventListener("loadedmetadata", () => {
-            if (n.duration && p.current) {
-              const e = Math.floor(n.duration / 60),
-                t = Math.floor(n.duration % 60);
-              p.current.innerText = `${e}:${t.toString().padStart(2, "0")}`;
-            }
-          });
+          n.addEventListener("loadedmetadata", g);
         const t = l.findIndex((n) => n.url === e.url);
         d.current && (d.current.disabled = t <= 0),
           f.current && (f.current.disabled = t >= l.length - 1),
-          v();
-      },
-      k = () => {
-        u.current.play(), v();
+          y();
       },
       w = () => {
+        u.current.play(), y();
+      },
+      S = () => {
         console.log("Stopping all audio elements on the page"),
           document.querySelectorAll("audio").forEach((e) => {
             e.pause(), (e.currentTime = 0);
@@ -9168,7 +9169,7 @@
       (0, r.useEffect)(() => {
         const e = () => {
           console.log("Page is unloading. Stopping audio playback."),
-            w(),
+            S(),
             u.current && (u.current.pause(), (u.current.src = ""));
         };
         return (
@@ -9176,7 +9177,7 @@
           window.addEventListener("pagehide", e),
           () => {
             console.log("Unmounting. Stopping audio playback."),
-              w(),
+              S(),
               u.current && (u.current.pause(), (u.current.src = "")),
               window.removeEventListener("beforeunload", e),
               window.removeEventListener("pagehide", e);
@@ -9185,7 +9186,8 @@
       }, []),
       (0, r.useEffect)(async () => {
         if (n)
-          (u.current.src = n),
+          u.current.addEventListener("loadedmetadata", g),
+            (u.current.src = n),
             (f.current.style.display = "none"),
             (d.current.style.display = "none"),
             (o.current.style.display = "none");
@@ -9235,7 +9237,7 @@
           ),
             a(l),
             console.log("Playlist: ", l),
-            b(l[0]);
+            k(l[0]);
         }
       }, []),
       r.createElement(
@@ -9298,7 +9300,7 @@
             "button",
             {
               onClick: () => {
-                u.current && (u.current.paused ? k() : u.current.pause());
+                u.current && (u.current.paused ? w() : u.current.pause());
               },
               style: { flex: 3 },
               title: "Play/Pause",
@@ -9309,7 +9311,7 @@
             "button",
             {
               onClick: () => {
-                g(0.1);
+                v(0.1);
               },
               style: { flex: 1 },
               title: "Play faster",
@@ -9320,7 +9322,7 @@
             "button",
             {
               onClick: () => {
-                g(-0.1);
+                v(-0.1);
               },
               style: { flex: 1 },
               title: "Play slower",
@@ -9347,8 +9349,8 @@
                 (n = u.current.src),
                   (t = l.findIndex((e) => e.url === n)),
                   (e = t > 0 ? l[t - 1] : null),
-                  b(e),
-                  k();
+                  k(e),
+                  w();
               },
               ref: d,
               title: "Previous track",
@@ -9379,7 +9381,7 @@
             "button",
             {
               onClick: () => {
-                y(), k();
+                b(), w();
               },
               ref: f,
               title: "Next track",
@@ -9397,7 +9399,7 @@
             }
           },
           onEnded: () => {
-            l.length > 0 && (y(), k());
+            l.length > 0 && (b(), w());
           },
         })
       )
