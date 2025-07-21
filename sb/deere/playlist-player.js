@@ -9137,8 +9137,8 @@
       },
       y = (e) => {
         const n = u.current;
-        n &&
-          ((n.src = e.url),
+        if (!n) return;
+        (n.src = e.url),
           i.current && (i.current.innerHTML = '"' + e.title + '"'),
           n.addEventListener("loadedmetadata", () => {
             if (n.duration && p.current) {
@@ -9146,12 +9146,19 @@
                 t = Math.floor(n.duration % 60);
               p.current.innerText = `${e}:${t.toString().padStart(2, "0")}`;
             }
-          }));
+          });
+        const t = l.findIndex((n) => n.url === e.url);
+        d.current && (d.current.disabled = t <= 0),
+          f.current && (f.current.disabled = t >= l.length - 1);
       },
       b = (e) => {
         y(e);
         var n = u.current;
-        console.log("Playing new track: " + e), n.play();
+        console.log("Playing new track: " + e),
+          u.current &&
+            (c.current.innerText =
+              "(" + u.current.playbackRate.toFixed(1) + "x)"),
+          n.play();
       },
       k = () => {
         console.log("Stopping all audio elements on the page"),
@@ -9246,8 +9253,7 @@
             "Currently playing: "
           ),
           r.createElement("span", { ref: i }),
-          " •",
-          " ",
+          r.createElement("br", null),
           r.createElement("span", { ref: p }),
           " •",
           " ",
