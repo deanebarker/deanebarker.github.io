@@ -9187,6 +9187,7 @@
       (0, r.useEffect)(async () => {
         if (n)
           u.current.addEventListener("loadedmetadata", g),
+            y(),
             (u.current.src = n),
             (f.current.style.display = "none"),
             (d.current.style.display = "none"),
