@@ -9290,9 +9290,7 @@
             {
               onClick: () => {
                 u.current &&
-                  (u.current.paused
-                    ? (y(), u.current.play())
-                    : u.current.pause());
+                  (u.current.paused ? u.current.play() : u.current.pause());
               },
               style: { flex: 3 },
               title: "Play/Pause",
