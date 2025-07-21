@@ -210,10 +210,10 @@
           throw e._result;
         }
         var R = { current: null },
-          D = { transition: null },
-          M = {
+          M = { transition: null },
+          D = {
             ReactCurrentDispatcher: R,
-            ReactCurrentBatchConfig: D,
+            ReactCurrentBatchConfig: M,
             ReactCurrentOwner: E,
           };
         function O() {
@@ -262,7 +262,7 @@
           (n.PureComponent = b),
           (n.StrictMode = a),
           (n.Suspense = c),
-          (n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = M),
+          (n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = D),
           (n.act = O),
           (n.cloneElement = function (e, n, r) {
             if (null == e)
@@ -341,12 +341,12 @@
             return { $$typeof: f, type: e, compare: void 0 === n ? null : n };
           }),
           (n.startTransition = function (e) {
-            var n = D.transition;
-            D.transition = {};
+            var n = M.transition;
+            M.transition = {};
             try {
               e();
             } finally {
-              D.transition = n;
+              M.transition = n;
             }
           }),
           (n.unstable_act = O),
@@ -478,10 +478,10 @@
         }
         function k(e) {
           if (((g = !1), w(e), !h))
-            if (null !== r(s)) (h = !0), D(S);
+            if (null !== r(s)) (h = !0), M(S);
             else {
               var n = r(c);
-              null !== n && M(k, n.startTime - e);
+              null !== n && D(k, n.startTime - e);
             }
         }
         function S(e, t) {
@@ -508,7 +508,7 @@
             if (null !== d) var i = !0;
             else {
               var f = r(c);
-              null !== f && M(k, f.startTime - t), (i = !1);
+              null !== f && D(k, f.startTime - t), (i = !1);
             }
             return i;
           } finally {
@@ -555,10 +555,10 @@
           E = function () {
             v(T, 0);
           };
-        function D(e) {
+        function M(e) {
           (C = e), x || ((x = !0), E());
         }
-        function M(e, t) {
+        function D(e, t) {
           _ = v(function () {
             e(n.unstable_now());
           }, t);
@@ -573,7 +573,7 @@
             e.callback = null;
           }),
           (n.unstable_continueExecution = function () {
-            h || m || ((h = !0), D(S));
+            h || m || ((h = !0), M(S));
           }),
           (n.unstable_forceFrameRate = function (e) {
             0 > e || 125 < e
@@ -668,8 +668,8 @@
                   t(c, e),
                   null === r(s) &&
                     e === r(c) &&
-                    (g ? (y(_), (_ = -1)) : (g = !0), M(k, a - o)))
-                : ((e.sortIndex = u), t(s, e), h || m || ((h = !0), D(S))),
+                    (g ? (y(_), (_ = -1)) : (g = !0), D(k, a - o)))
+                : ((e.sortIndex = u), t(s, e), h || m || ((h = !0), M(S))),
               e
             );
           }),
@@ -906,15 +906,15 @@
           L = Symbol.for("react.memo"),
           R = Symbol.for("react.lazy");
         Symbol.for("react.scope"), Symbol.for("react.debug_trace_mode");
-        var D = Symbol.for("react.offscreen");
+        var M = Symbol.for("react.offscreen");
         Symbol.for("react.legacy_hidden"),
           Symbol.for("react.cache"),
           Symbol.for("react.tracing_marker");
-        var M = Symbol.iterator;
+        var D = Symbol.iterator;
         function O(e) {
           return null === e || "object" != typeof e
             ? null
-            : "function" == typeof (e = (M && e[M]) || e["@@iterator"])
+            : "function" == typeof (e = (D && e[D]) || e["@@iterator"])
             ? e
             : null;
         }
@@ -1594,19 +1594,19 @@
           if (t && "function" != typeof t) throw Error(a(231, n, typeof t));
           return t;
         }
-        var De = !1;
+        var Me = !1;
         if (c)
           try {
-            var Me = {};
-            Object.defineProperty(Me, "passive", {
+            var De = {};
+            Object.defineProperty(De, "passive", {
               get: function () {
-                De = !0;
+                Me = !0;
               },
             }),
-              window.addEventListener("test", Me, Me),
-              window.removeEventListener("test", Me, Me);
+              window.addEventListener("test", De, De),
+              window.removeEventListener("test", De, De);
           } catch (ce) {
-            De = !1;
+            Me = !1;
           }
         function Oe(e, n, t, r, l, a, o, u, i) {
           var s = Array.prototype.slice.call(arguments, 3);
@@ -1902,8 +1902,8 @@
           Tn = null,
           Ln = null,
           Rn = new Map(),
-          Dn = new Map(),
-          Mn = [],
+          Mn = new Map(),
+          Dn = [],
           On =
             "mousedown mouseup touchcancel touchend touchstart auxclick dblclick pointercancel pointerdown pointerup dragend dragstart drop compositionend compositionstart keydown keypress keyup input textInput copy cut paste click change contextmenu reset submit".split(
               " "
@@ -1928,7 +1928,7 @@
               break;
             case "gotpointercapture":
             case "lostpointercapture":
-              Dn.delete(n.pointerId);
+              Mn.delete(n.pointerId);
           }
         }
         function Fn(e, n, t, r, l, a) {
@@ -1989,7 +1989,7 @@
             null !== Tn && jn(Tn) && (Tn = null),
             null !== Ln && jn(Ln) && (Ln = null),
             Rn.forEach(An),
-            Dn.forEach(An);
+            Mn.forEach(An);
         }
         function $n(e, n) {
           e.blockedOn === n &&
@@ -2014,14 +2014,14 @@
               null !== Tn && $n(Tn, e),
               null !== Ln && $n(Ln, e),
               Rn.forEach(n),
-              Dn.forEach(n),
+              Mn.forEach(n),
               t = 0;
-            t < Mn.length;
+            t < Dn.length;
             t++
           )
-            (r = Mn[t]).blockedOn === e && (r.blockedOn = null);
-          for (; 0 < Mn.length && null === (t = Mn[0]).blockedOn; )
-            Un(t), null === t.blockedOn && Mn.shift();
+            (r = Dn[t]).blockedOn === e && (r.blockedOn = null);
+          for (; 0 < Dn.length && null === (t = Dn[0]).blockedOn; )
+            Un(t), null === t.blockedOn && Dn.shift();
         }
         var Hn = w.ReactCurrentBatchConfig,
           Qn = !0;
@@ -2064,7 +2064,7 @@
                   case "gotpointercapture":
                     return (
                       (a = l.pointerId),
-                      Dn.set(a, Fn(Dn.get(a) || null, e, n, t, r, l)),
+                      Mn.set(a, Fn(Mn.get(a) || null, e, n, t, r, l)),
                       !0
                     );
                 }
@@ -2495,18 +2495,18 @@
             deltaMode: 0,
           }),
           Rt = at(Lt),
-          Dt = [9, 13, 27, 32],
-          Mt = c && "CompositionEvent" in window,
+          Mt = [9, 13, 27, 32],
+          Dt = c && "CompositionEvent" in window,
           Ot = null;
         c && "documentMode" in document && (Ot = document.documentMode);
         var It = c && "TextEvent" in window && !Ot,
-          Ft = c && (!Mt || (Ot && 8 < Ot && 11 >= Ot)),
+          Ft = c && (!Dt || (Ot && 8 < Ot && 11 >= Ot)),
           Ut = String.fromCharCode(32),
           jt = !1;
         function At(e, n) {
           switch (e) {
             case "keyup":
-              return -1 !== Dt.indexOf(n.keyCode);
+              return -1 !== Mt.indexOf(n.keyCode);
             case "keydown":
               return 229 !== n.keyCode;
             case "keypress":
@@ -2824,9 +2824,9 @@
         function Rr(e, n) {
           Tr.set(e, n), i(n, [e]);
         }
-        for (var Dr = 0; Dr < Lr.length; Dr++) {
-          var Mr = Lr[Dr];
-          Rr(Mr.toLowerCase(), "on" + (Mr[0].toUpperCase() + Mr.slice(1)));
+        for (var Mr = 0; Mr < Lr.length; Mr++) {
+          var Dr = Lr[Mr];
+          Rr(Dr.toLowerCase(), "on" + (Dr[0].toUpperCase() + Dr.slice(1)));
         }
         Rr(_r, "onAnimationEnd"),
           Rr(Pr, "onAnimationIteration"),
@@ -2961,7 +2961,7 @@
           }
           (t = l.bind(null, n, t, e)),
             (l = void 0),
-            !De ||
+            !Me ||
               ("touchstart" !== n && "touchmove" !== n && "wheel" !== n) ||
               (l = !0),
             r
@@ -3224,7 +3224,7 @@
                   wr(o, t, l);
               }
               var y;
-              if (Mt)
+              if (Dt)
                 e: {
                   switch (e) {
                     case "compositionstart":
@@ -3271,7 +3271,7 @@
                     })(e, t)
                   : (function (e, n) {
                       if ($t)
-                        return "compositionend" === e || (!Mt && At(e, n))
+                        return "compositionend" === e || (!Dt && At(e, n))
                           ? ((e = nt()), (et = Jn = Zn = null), ($t = !1), e)
                           : null;
                       switch (e) {
@@ -3491,10 +3491,10 @@
         function Rl(e) {
           return null != e.childContextTypes;
         }
-        function Dl() {
+        function Ml() {
           Cl(zl), Cl(Nl);
         }
-        function Ml(e, n, t) {
+        function Dl(e, n, t) {
           if (Nl.current !== Pl) throw Error(a(168));
           _l(Nl, n), _l(zl, t);
         }
@@ -3799,7 +3799,7 @@
             return e;
           }
           function l(e, n) {
-            return ((e = Ds(e, n)).index = 0), (e.sibling = null), e;
+            return ((e = Ms(e, n)).index = 0), (e.sibling = null), e;
           }
           function o(n, t, r) {
             return (
@@ -3832,7 +3832,7 @@
                     a.$$typeof === R &&
                     ya(a) === n.type))
               ? (((r = l(n, t.props)).ref = ga(e, n, t)), (r.return = e), r)
-              : (((r = Ms(t.type, t.key, t.props, null, e.mode, r)).ref = ga(
+              : (((r = Ds(t.type, t.key, t.props, null, e.mode, r)).ref = ga(
                   e,
                   n,
                   t
@@ -3860,7 +3860,7 @@
               switch (n.$$typeof) {
                 case k:
                   return (
-                    ((t = Ms(n.type, n.key, n.props, null, e.mode, t)).ref = ga(
+                    ((t = Ds(n.type, n.key, n.props, null, e.mode, t)).ref = ga(
                       e,
                       null,
                       n
@@ -4059,7 +4059,7 @@
                       ? (((a = Os(o.props.children, r.mode, i, o.key)).return =
                           r),
                         (r = a))
-                      : (((i = Ms(
+                      : (((i = Ds(
                           o.type,
                           o.key,
                           o.props,
@@ -4157,17 +4157,17 @@
         function Ra(e) {
           null === La ? (La = [e]) : La.push(e);
         }
-        function Da(e, n, t, r) {
+        function Ma(e, n, t, r) {
           var l = n.interleaved;
           return (
             null === l
               ? ((t.next = t), Ra(n))
               : ((t.next = l.next), (l.next = t)),
             (n.interleaved = t),
-            Ma(e, r)
+            Da(e, r)
           );
         }
-        function Ma(e, n) {
+        function Da(e, n) {
           e.lanes |= n;
           var t = e.alternate;
           for (null !== t && (t.lanes |= n), t = e, e = e.return; null !== e; )
@@ -4216,7 +4216,7 @@
             return (
               null === l ? (n.next = n) : ((n.next = l.next), (l.next = n)),
               (r.pending = n),
-              Ma(e, t)
+              Da(e, t)
             );
           }
           return (
@@ -4224,7 +4224,7 @@
               ? ((n.next = n), Ra(r))
               : ((n.next = l.next), (l.next = n)),
             (r.interleaved = n),
-            Ma(e, t)
+            Da(e, t)
           );
         }
         function Aa(e, n, t) {
@@ -4674,7 +4674,7 @@
           }
         }
         function zo(e) {
-          var n = Ma(e, 1);
+          var n = Da(e, 1);
           null !== n && ts(n, e, 1, -1);
         }
         function To(e) {
@@ -4711,12 +4711,12 @@
         function Ro() {
           return bo().memoizedState;
         }
-        function Do(e, n, t, r) {
+        function Mo(e, n, t, r) {
           var l = yo();
           (oo.flags |= e),
             (l.memoizedState = Lo(1 | n, t, void 0, void 0 === r ? null : r));
         }
-        function Mo(e, n, t, r) {
+        function Do(e, n, t, r) {
           var l = bo();
           r = void 0 === r ? null : r;
           var a = void 0;
@@ -4728,16 +4728,16 @@
           (oo.flags |= e), (l.memoizedState = Lo(1 | n, t, a, r));
         }
         function Oo(e, n) {
-          return Do(8390656, 8, e, n);
+          return Mo(8390656, 8, e, n);
         }
         function Io(e, n) {
-          return Mo(2048, 8, e, n);
+          return Do(2048, 8, e, n);
         }
         function Fo(e, n) {
-          return Mo(4, 2, e, n);
+          return Do(4, 2, e, n);
         }
         function Uo(e, n) {
-          return Mo(4, 4, e, n);
+          return Do(4, 4, e, n);
         }
         function jo(e, n) {
           return "function" == typeof n
@@ -4757,7 +4757,7 @@
         function Ao(e, n, t) {
           return (
             (t = null != t ? t.concat([e]) : null),
-            Mo(4, 4, jo.bind(null, n, e), t)
+            Do(4, 4, jo.bind(null, n, e), t)
           );
         }
         function Vo() {}
@@ -4810,7 +4810,7 @@
           }),
             Yo(e)
               ? Xo(n, t)
-              : null !== (t = Da(e, n, t, r)) &&
+              : null !== (t = Ma(e, n, t, r)) &&
                 (ts(t, e, r, es()), Go(t, n, r));
         }
         function Ko(e, n, t) {
@@ -4843,7 +4843,7 @@
                   );
                 }
               } catch (e) {}
-            null !== (t = Da(e, n, l, r)) &&
+            null !== (t = Ma(e, n, l, r)) &&
               (ts(t, e, r, (l = es())), Go(t, n, r));
           }
         }
@@ -4893,14 +4893,14 @@
             useImperativeHandle: function (e, n, t) {
               return (
                 (t = null != t ? t.concat([e]) : null),
-                Do(4194308, 4, jo.bind(null, n, e), t)
+                Mo(4194308, 4, jo.bind(null, n, e), t)
               );
             },
             useLayoutEffect: function (e, n) {
-              return Do(4194308, 4, e, n);
+              return Mo(4194308, 4, e, n);
             },
             useInsertionEffect: function (e, n) {
-              return Do(4, 2, e, n);
+              return Mo(4, 2, e, n);
             },
             useMemo: function (e, n) {
               var t = yo();
@@ -5281,7 +5281,7 @@
               void 0 !== a.defaultProps ||
               null !== t.compare ||
               void 0 !== t.defaultProps
-              ? (((e = Ms(t.type, null, r, n, n.mode, l)).ref = n.ref),
+              ? (((e = Ds(t.type, null, r, n, n.mode, l)).ref = n.ref),
                 (e.return = n),
                 (n.child = e))
               : ((n.tag = 15), (n.type = a), Eu(e, n, a, r, l));
@@ -5296,7 +5296,7 @@
           }
           return (
             (n.flags |= 1),
-            ((e = Ds(a, r)).ref = n.ref),
+            ((e = Ms(a, r)).ref = n.ref),
             (e.return = n),
             (n.child = e)
           );
@@ -5328,7 +5328,7 @@
                     transitions: null,
                   }),
                   (n.updateQueue = null),
-                  _l(Di, Ri),
+                  _l(Mi, Ri),
                   (Ri |= e),
                   null
                 );
@@ -5338,7 +5338,7 @@
                 transitions: null,
               }),
                 (r = null !== a ? a.baseLanes : t),
-                _l(Di, Ri),
+                _l(Mi, Ri),
                 (Ri |= r);
             } else
               (n.memoizedState = {
@@ -5346,13 +5346,13 @@
                 cachePool: null,
                 transitions: null,
               }),
-                _l(Di, Ri),
+                _l(Mi, Ri),
                 (Ri |= t);
           else
             null !== a
               ? ((r = a.baseLanes | t), (n.memoizedState = null))
               : (r = t),
-              _l(Di, Ri),
+              _l(Mi, Ri),
               (Ri |= r);
           return wu(e, n, l, t), n.child;
         }
@@ -5513,8 +5513,8 @@
         function zu(e) {
           var n = e.stateNode;
           n.pendingContext
-            ? Ml(0, n.pendingContext, n.pendingContext !== n.context)
-            : n.context && Ml(0, n.context, !1),
+            ? Dl(0, n.pendingContext, n.pendingContext !== n.context)
+            : n.context && Dl(0, n.context, !1),
             Ya(e, n.containerInfo);
         }
         function Tu(e, n, t, r, l) {
@@ -5522,8 +5522,8 @@
         }
         var Lu,
           Ru,
-          Du,
           Mu,
+          Du,
           Ou = { dehydrated: null, treeContext: null, retryLane: 0 };
         function Iu(e) {
           return { baseLanes: e, cachePool: null, transitions: null };
@@ -5643,7 +5643,7 @@
                   }
                   0 !== (l = l & (r.suspendedLanes | u) ? 0 : l) &&
                     l !== o.retryLane &&
-                    ((o.retryLane = l), Ma(e, l), ts(r, e, l, -1));
+                    ((o.retryLane = l), Da(e, l), ts(r, e, l, -1));
                 }
                 return hs(), ju(e, n, u, (r = cu(Error(a(421)))));
               }
@@ -5673,12 +5673,12 @@
             var s = { mode: "hidden", children: l.children };
             return (
               1 & i || n.child === o
-                ? ((l = Ds(o, s)).subtreeFlags = 14680064 & o.subtreeFlags)
+                ? ((l = Ms(o, s)).subtreeFlags = 14680064 & o.subtreeFlags)
                 : (((l = n.child).childLanes = 0),
                   (l.pendingProps = s),
                   (n.deletions = null)),
               null !== r
-                ? (u = Ds(r, u))
+                ? (u = Ms(r, u))
                 : ((u = Os(u, i, t, null)).flags |= 2),
               (u.return = n),
               (l.return = n),
@@ -5702,7 +5702,7 @@
           }
           return (
             (e = (u = e.child).sibling),
-            (l = Ds(u, { mode: "visible", children: l.children })),
+            (l = Ms(u, { mode: "visible", children: l.children })),
             !(1 & n.mode) && (l.lanes = t),
             (l.return = n),
             (l.sibling = null),
@@ -5827,12 +5827,12 @@
           if (null !== e && n.child !== e.child) throw Error(a(153));
           if (null !== n.child) {
             for (
-              t = Ds((e = n.child), e.pendingProps), n.child = t, t.return = n;
+              t = Ms((e = n.child), e.pendingProps), n.child = t, t.return = n;
               null !== e.sibling;
 
             )
               (e = e.sibling),
-                ((t = t.sibling = Ds(e, e.pendingProps)).return = n);
+                ((t = t.sibling = Ms(e, e.pendingProps)).return = n);
             t.sibling = null;
           }
           return n.child;
@@ -5893,7 +5893,7 @@
               return Wu(n), null;
             case 1:
             case 17:
-              return Rl(n.type) && Dl(), Wu(n), null;
+              return Rl(n.type) && Ml(), Wu(n), null;
             case 3:
               return (
                 (r = n.stateNode),
@@ -5918,7 +5918,7 @@
               Za(n);
               var l = Ka(qa.current);
               if (((t = n.type), null !== e && null != n.stateNode))
-                Du(e, n, t, r, l),
+                Mu(e, n, t, r, l),
                   e.ref !== n.ref && ((n.flags |= 512), (n.flags |= 2097152));
               else {
                 if (!r) {
@@ -6116,7 +6116,7 @@
               }
               return Wu(n), null;
             case 6:
-              if (e && null != n.stateNode) Mu(e, n, e.memoizedProps, r);
+              if (e && null != n.stateNode) Du(e, n, e.memoizedProps, r);
               else {
                 if ("string" != typeof r && null === n.stateNode)
                   throw Error(a(166));
@@ -6178,7 +6178,7 @@
                     ((n.child.flags |= 8192),
                     1 & n.mode &&
                       (null === e || 1 & Ja.current
-                        ? 0 === Mi && (Mi = 3)
+                        ? 0 === Di && (Di = 3)
                         : hs())),
                   null !== n.updateQueue && (n.flags |= 4),
                   Wu(n),
@@ -6198,7 +6198,7 @@
               if (((r = !!(128 & n.flags)), null === (i = o.rendering)))
                 if (r) Qu(o, !1);
                 else {
-                  if (0 !== Mi || (null !== e && 128 & e.flags))
+                  if (0 !== Di || (null !== e && 128 & e.flags))
                     for (e = n.child; null !== e; ) {
                       if (null !== (i = eo(e))) {
                         for (
@@ -6314,7 +6314,7 @@
           switch ((na(n), n.tag)) {
             case 1:
               return (
-                Rl(n.type) && Dl(),
+                Rl(n.type) && Ml(),
                 65536 & (e = n.flags)
                   ? ((n.flags = (-65537 & e) | 128), n)
                   : null
@@ -6371,7 +6371,7 @@
           }
         }),
           (Ru = function () {}),
-          (Du = function (e, n, t, r) {
+          (Mu = function (e, n, t, r) {
             var l = e.memoizedProps;
             if (l !== r) {
               (e = n.stateNode), Ka(Qa.current);
@@ -6446,7 +6446,7 @@
               (n.updateQueue = c) && (n.flags |= 4);
             }
           }),
-          (Mu = function (e, n, t, r) {
+          (Du = function (e, n, t, r) {
             t !== r && (n.flags |= 4);
           });
         var Yu = !1,
@@ -7192,8 +7192,8 @@
           Ti = null,
           Li = 0,
           Ri = 0,
-          Di = xl(0),
-          Mi = 0,
+          Mi = xl(0),
+          Di = 0,
           Oi = null,
           Ii = 0,
           Fi = 0,
@@ -7231,7 +7231,7 @@
           if (50 < Xi) throw ((Xi = 0), (Gi = null), Error(a(185)));
           yn(e, t, r),
             (2 & Ni && e === zi) ||
-              (e === zi && (!(2 & Ni) && (Fi |= t), 4 === Mi && us(e, Li)),
+              (e === zi && (!(2 & Ni) && (Fi |= t), 4 === Di && us(e, Li)),
               rs(e, r),
               1 === t &&
                 0 === Ni &&
@@ -7321,7 +7321,7 @@
             _a(),
               (Ci.current = o),
               (Ni = l),
-              null !== Ti ? (n = 0) : ((zi = null), (Li = 0), (n = Mi));
+              null !== Ti ? (n = 0) : ((zi = null), (Li = 0), (n = Di));
           }
           if (0 !== n) {
             if (
@@ -7498,7 +7498,7 @@
           }
         }
         function fs() {
-          (Ri = Di.current), Cl(Di);
+          (Ri = Mi.current), Cl(Mi);
         }
         function ds(e, n) {
           (e.finishedWork = null), (e.finishedLanes = 0);
@@ -7508,7 +7508,7 @@
               var r = t;
               switch ((na(r), r.tag)) {
                 case 1:
-                  null != (r = r.type.childContextTypes) && Dl();
+                  null != (r = r.type.childContextTypes) && Ml();
                   break;
                 case 3:
                   Xa(), Cl(zl), Cl(Nl), to();
@@ -7534,9 +7534,9 @@
             }
           if (
             ((zi = e),
-            (Ti = e = Ds(e.current, null)),
+            (Ti = e = Ms(e.current, null)),
             (Li = Ri = n),
-            (Mi = 0),
+            (Di = 0),
             (Oi = null),
             (Ui = Fi = Ii = 0),
             (Ai = ji = null),
@@ -7576,7 +7576,7 @@
                 (_i.current = null),
                 null === t || null === t.return)
               ) {
-                (Mi = 1), (Oi = n), (Ti = null);
+                (Di = 1), (Oi = n), (Ti = null);
                 break;
               }
               e: {
@@ -7630,7 +7630,7 @@
                   }
                 }
                 (o = s = su(s, i)),
-                  4 !== Mi && (Mi = 2),
+                  4 !== Di && (Di = 2),
                   null === ji ? (ji = [o]) : ji.push(o),
                   (o = u);
                 do {
@@ -7677,7 +7677,7 @@
           return (Ci.current = Zo), null === e ? Zo : e;
         }
         function hs() {
-          (0 !== Mi && 3 !== Mi && 2 !== Mi) || (Mi = 4),
+          (0 !== Di && 3 !== Di && 2 !== Di) || (Di = 4),
             null === zi ||
               (!(268435455 & Ii) && !(268435455 & Fi)) ||
               us(zi, Li);
@@ -7695,7 +7695,7 @@
             }
           if ((_a(), (Ni = t), (Ci.current = r), null !== Ti))
             throw Error(a(261));
-          return (zi = null), (Li = 0), Mi;
+          return (zi = null), (Li = 0), Di;
         }
         function vs() {
           for (; null !== Ti; ) bs(Ti);
@@ -7716,13 +7716,13 @@
             if (((e = n.return), 32768 & n.flags)) {
               if (null !== (t = Ku(t, n)))
                 return (t.flags &= 32767), void (Ti = t);
-              if (null === e) return (Mi = 6), void (Ti = null);
+              if (null === e) return (Di = 6), void (Ti = null);
               (e.flags |= 32768), (e.subtreeFlags = 0), (e.deletions = null);
             } else if (null !== (t = qu(t, n, Ri))) return void (Ti = t);
             if (null !== (n = n.sibling)) return void (Ti = n);
             Ti = n = e;
           } while (null !== n);
-          0 === Mi && (Mi = 5);
+          0 === Di && (Di = 5);
         }
         function ks(e, n, t) {
           var r = wn,
@@ -8117,8 +8117,8 @@
             (e.pingedLanes |= e.suspendedLanes & t),
             zi === e &&
               (Li & t) === t &&
-              (4 === Mi ||
-              (3 === Mi && (130023424 & Li) === Li && 500 > Ge() - Vi)
+              (4 === Di ||
+              (3 === Di && (130023424 & Li) === Li && 500 > Ge() - Vi)
                 ? ds(e, 0)
                 : (Ui |= t)),
             rs(e, n);
@@ -8129,7 +8129,7 @@
               ? ((n = fn), !(130023424 & (fn <<= 1)) && (fn = 4194304))
               : (n = 1));
           var t = es();
-          null !== (e = Ma(e, n)) && (yn(e, n, t), rs(e, t));
+          null !== (e = Da(e, n)) && (yn(e, n, t), rs(e, t));
         }
         function Ps(e) {
           var n = e.memoizedState,
@@ -8185,7 +8185,7 @@
         function Rs(e) {
           return !(!(e = e.prototype) || !e.isReactComponent);
         }
-        function Ds(e, n) {
+        function Ms(e, n) {
           var t = e.alternate;
           return (
             null === t
@@ -8218,7 +8218,7 @@
             t
           );
         }
-        function Ms(e, n, t, r, l, o) {
+        function Ds(e, n, t, r, l, o) {
           var u = 2;
           if (((r = e), "function" == typeof e)) Rs(e) && (u = 1);
           else if ("string" == typeof e) u = 5;
@@ -8241,7 +8241,7 @@
                 return (
                   ((e = Ls(19, t, n, l)).elementType = T), (e.lanes = o), e
                 );
-              case D:
+              case M:
                 return Is(t, l, o, n);
               default:
                 if ("object" == typeof e && null !== e)
@@ -8276,7 +8276,7 @@
         }
         function Is(e, n, t, r) {
           return (
-            ((e = Ls(22, e, r, n)).elementType = D),
+            ((e = Ls(22, e, r, n)).elementType = M),
             (e.lanes = t),
             (e.stateNode = { isHidden: !1 }),
             e
@@ -8852,10 +8852,10 @@
               e = { blockedOn: null, target: e, priority: n };
               for (
                 var t = 0;
-                t < Mn.length && 0 !== n && n < Mn[t].priority;
+                t < Dn.length && 0 !== n && n < Dn[t].priority;
                 t++
               );
-              Mn.splice(t, 0, e), 0 === t && Un(e);
+              Dn.splice(t, 0, e), 0 === t && Un(e);
             }
           }),
           (Sn = function (e) {
@@ -8872,7 +8872,7 @@
                 break;
               case 13:
                 cs(function () {
-                  var n = Ma(e, 1);
+                  var n = Da(e, 1);
                   if (null !== n) {
                     var t = es();
                     ts(n, e, 1, t);
@@ -8883,14 +8883,14 @@
           }),
           (En = function (e) {
             if (13 === e.tag) {
-              var n = Ma(e, 134217728);
+              var n = Da(e, 134217728);
               null !== n && ts(n, e, 134217728, es()), Ws(e, 134217728);
             }
           }),
           (xn = function (e) {
             if (13 === e.tag) {
               var n = ns(e),
-                t = Ma(e, n);
+                t = Da(e, n);
               null !== t && ts(t, e, n, es()), Ws(e, n);
             }
           }),
@@ -9120,29 +9120,40 @@
       s = (0, r.useRef)(null),
       c = (0, r.useRef)(null),
       f = (0, r.useRef)(null),
-      d = (0, r.useRef)(null);
-    let [p, m] = (0, r.useState)(0);
-    const h = (e) => {
+      d = (0, r.useRef)(null),
+      p = (0, r.useRef)(null);
+    let [m, h] = (0, r.useState)(0);
+    const g = (e) => {
         u.current &&
           ((u.current.playbackRate = u.current.playbackRate + e),
           (c.current.innerText =
             "(" + u.current.playbackRate.toFixed(1) + "x)"));
       },
-      g = () => {
+      v = () => {
         var e,
           n = u.current.src,
           t = l.findIndex((e) => e.url === n);
-        (e = -1 !== t && t + 1 < l.length ? l[t + 1] : null), y(e);
-      },
-      v = (e) => {
-        (u.current.src = e.url), (i.current.innerHTML = '"' + e.title + '"');
+        (e = -1 !== t && t + 1 < l.length ? l[t + 1] : null), b(e);
       },
       y = (e) => {
-        v(e);
+        const n = u.current;
+        n &&
+          ((n.src = e.url),
+          i.current && (i.current.innerHTML = '"' + e.title + '"'),
+          n.addEventListener("loadedmetadata", () => {
+            if (n.duration && p.current) {
+              const e = Math.floor(n.duration / 60),
+                t = Math.floor(n.duration % 60);
+              p.current.innerText = `${e}:${t.toString().padStart(2, "0")}`;
+            }
+          }));
+      },
+      b = (e) => {
+        y(e);
         var n = u.current;
         console.log("Playing new track: " + e), n.play();
       },
-      b = () => {
+      w = () => {
         console.log("Stopping all audio elements on the page"),
           document.querySelectorAll("audio").forEach((e) => {
             e.pause(), (e.currentTime = 0);
@@ -9152,7 +9163,7 @@
       (0, r.useEffect)(() => {
         const e = () => {
           console.log("Page is unloading. Stopping audio playback."),
-            b(),
+            w(),
             u.current && (u.current.pause(), (u.current.src = ""));
         };
         return (
@@ -9160,7 +9171,7 @@
           window.addEventListener("pagehide", e),
           () => {
             console.log("Unmounting. Stopping audio playback."),
-              b(),
+              w(),
               u.current && (u.current.pause(), (u.current.src = "")),
               window.removeEventListener("beforeunload", e),
               window.removeEventListener("pagehide", e);
@@ -9220,7 +9231,7 @@
           ),
             a(l),
             console.log("Playlist: ", l),
-            v(l[0]);
+            y(l[0]);
         }
       }, []),
       r.createElement(
@@ -9235,6 +9246,10 @@
             "Currently playing: "
           ),
           r.createElement("span", { ref: i }),
+          " &bullet;",
+          " ",
+          r.createElement("span", { ref: p }),
+          " &bullet;",
           " ",
           r.createElement("span", { ref: c })
         ),
@@ -9246,7 +9261,7 @@
               if (u.current && s.current) {
                 const n = s.current.getBoundingClientRect(),
                   t = ((e.clientX - n.left) / n.width) * u.current.duration;
-                (u.current.currentTime = t), m((t / u.current.duration) * 100);
+                (u.current.currentTime = t), h((t / u.current.duration) * 100);
               }
             },
             style: {
@@ -9259,7 +9274,7 @@
             },
           },
           r.createElement("div", {
-            style: { height: "100%", width: `${p}%`, background: "#00b0b0" },
+            style: { height: "100%", width: `${m}%`, background: "#00b0b0" },
           })
         ),
         r.createElement(
@@ -9309,7 +9324,7 @@
             "button",
             {
               onClick: () => {
-                h(0.1);
+                g(0.1);
               },
               style: { flex: 1 },
               title: "Play faster",
@@ -9336,7 +9351,7 @@
             "button",
             {
               onClick: () => {
-                h(-0.1);
+                g(-0.1);
               },
               style: { flex: 1 },
               title: "Play slower",
@@ -9445,7 +9460,7 @@
             "button",
             {
               onClick: () => {
-                g();
+                v();
               },
               ref: f,
               title: "Next track",
@@ -9474,10 +9489,10 @@
             if (u.current) {
               const e = u.current.currentTime,
                 n = u.current.duration || 0;
-              m((e / n) * 100);
+              h((e / n) * 100);
             }
           },
-          onEnded: g,
+          onEnded: v,
         })
       )
     );
