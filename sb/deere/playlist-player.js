@@ -9122,12 +9122,6 @@
       f = (0, r.useRef)(null),
       d = (0, r.useRef)(null);
     let [p, m] = (0, r.useState)(0);
-    (0, r.useEffect)(
-      () => () => {
-        u.current && (u.current.pause(), (u.current.src = ""));
-      },
-      []
-    );
     const h = (e) => {
         u.current &&
           ((u.current.playbackRate = u.current.playbackRate + e),
@@ -9163,9 +9157,10 @@
           t.play();
       },
       y = () => {
-        document.querySelectorAll("audio").forEach((e) => {
-          e.pause(), (e.currentTime = 0);
-        });
+        console.log("Stopping all audio elements on the page"),
+          document.querySelectorAll("audio").forEach((e) => {
+            e.pause(), (e.currentTime = 0);
+          });
       };
     return (
       (0, r.useEffect)(async () => {
@@ -9223,6 +9218,11 @@
             console.log("Playlist: ", l),
             v(l[0]);
         }
+        return () => {
+          console.log("Unmounting. Stopping audio playback."),
+            y(),
+            u.current && (u.current.pause(), (u.current.src = ""));
+        };
       }, []),
       r.createElement(
         "div",
