@@ -9138,7 +9138,9 @@
         (u.current.src = e.url), (i.current.innerHTML = '"' + e.title + '"');
       },
       y = (e) => {
-        v(e), console.log("Playing new track: " + e), player.play();
+        v(e);
+        var n = u.current;
+        console.log("Playing new track: " + e), n.play();
       },
       b = () => {
         console.log("Stopping all audio elements on the page"),
