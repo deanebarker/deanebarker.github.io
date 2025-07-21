@@ -4,7 +4,7 @@
   const SOCIAL_ACTIONS_QUERY = ".news-feed-post-social-actions";
   const BUTTON_NAME = "Repost";
   const BASE_TINY_MCE_URL =
-    "https://deanebarker.github.io/tinymce/tinymce.min.js";
+    "https://deanebarker.github.io/tinymce/";
 
   function addScript() {
     document.addScriptLink(BASE_TINY_MCE_URL + "tinymce.min.js");
