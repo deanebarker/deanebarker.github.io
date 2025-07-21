@@ -4,7 +4,7 @@
   const SOCIAL_ACTIONS_QUERY = ".news-feed-post-social-actions";
   const BUTTON_NAME = "Repost";
   const BASE_TINY_MCE_URL =
-    "https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.6.1/";
+    "https://deanebarker.github.io/tinymce/";
 
   function addScript() {
     document.addScriptLink(BASE_TINY_MCE_URL + "tinymce.min.js");
@@ -157,6 +157,13 @@
       license_key: "gpl",
       base_url: BASE_TINY_MCE_URL,
       link_context_toolbar: true,
+
+      // This is the explicitly control where TinyMCE loads its plugins from
+      // external_plugins: {
+      //   link: 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.9.1/plugins/link/plugin.min.js',
+      //   lists: 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.6.1/plugins/lists/plugin.js'
+      // }
+  
 
       // This is a hack to fix a weird bug that puts TinyMCE's dialogs underneath the DIALOG element that spawned it
       init_instance_callback: function (editor) {
