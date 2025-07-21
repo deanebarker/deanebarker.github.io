@@ -9122,6 +9122,12 @@
       f = (0, r.useRef)(null),
       d = (0, r.useRef)(null);
     let [p, m] = (0, r.useState)(0);
+    (0, r.useEffect)(
+      () => () => {
+        u.current && (u.current.pause(), (u.current.src = ""));
+      },
+      []
+    );
     const h = (e) => {
         u.current &&
           ((u.current.playbackRate = u.current.playbackRate + e),
