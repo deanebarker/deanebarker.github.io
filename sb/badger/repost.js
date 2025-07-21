@@ -158,6 +158,7 @@
       base_url: BASE_TINY_MCE_URL,
       link_context_toolbar: true,
       minify: true,
+      suffix: '.min',
 
       // This is the explicitly control where TinyMCE loads its plugins from
       // external_plugins: {
