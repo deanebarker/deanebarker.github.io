@@ -9163,6 +9163,24 @@
           });
       };
     return (
+      (0, r.useEffect)(() => {
+        const e = () => {
+          console.log("Page is unloading. Stopping audio playback."),
+            y(),
+            u.current && (u.current.pause(), (u.current.src = ""));
+        };
+        return (
+          window.addEventListener("beforeunload", e),
+          window.addEventListener("pagehide", e),
+          () => {
+            console.log("Unmounting. Stopping audio playback."),
+              y(),
+              u.current && (u.current.pause(), (u.current.src = "")),
+              window.removeEventListener("beforeunload", e),
+              window.removeEventListener("pagehide", e);
+          }
+        );
+      }, []),
       (0, r.useEffect)(async () => {
         if (n)
           (u.current.src = n),
@@ -9218,11 +9236,6 @@
             console.log("Playlist: ", l),
             v(l[0]);
         }
-        return () => {
-          console.log("Unmounting. Stopping audio playback."),
-            y(),
-            u.current && (u.current.pause(), (u.current.src = ""));
-        };
       }, []),
       r.createElement(
         "div",
