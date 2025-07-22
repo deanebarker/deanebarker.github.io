@@ -160,7 +160,9 @@
       minify: true,
       suffix: '.min',
       setup: function (editor) {
+        console.log("Repost: TinyMCE editor setup", editor);
         editor.on('blur', function () {
+          console.log("Repost: Saving TinyMCE content on blur");
           editor.save(); // Writes back to the original <textarea>
         })
       },
