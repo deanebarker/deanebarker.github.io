@@ -251,6 +251,9 @@
 
     // Remove the dialog, so we're not left with a bunch of them
     dialog.parentNode.removeChild(dialog);
+
+    // Destroy the TinyMCE instance
+    tinymce.remove();
   }
 
   async function fetchJson(url) {
