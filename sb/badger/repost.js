@@ -163,7 +163,9 @@
         console.log("Repost: TinyMCE editor setup", editor);
         editor.on('blur', function () {
           console.log("Repost: Saving TinyMCE content on blur");
-          editor.save(); // Writes back to the original <textarea>
+          console.log(editor.save()); // Writes back to the original <textarea>
+          console.log(editor.getContent()); // Get the content
+          console.log(document.getElementById("repostField-content").value);
         })
       },
 
