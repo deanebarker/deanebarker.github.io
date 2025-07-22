@@ -6,6 +6,8 @@
   const BASE_TINY_MCE_URL =
     "https://deanebarker.github.io/tinymce/";
 
+  let tinymce = null;
+
   function addScript() {
     document.addScriptLink(BASE_TINY_MCE_URL + "tinymce.min.js");
   }
@@ -190,48 +192,16 @@
       },
     };
     console.log("Repost: TinyMCE config", config);
-    tinymce.remove(config.selector);
+    tinymce.remove(); // Remove any existing TinyMCE instances
     tinymce.init(config);
 
     inner.addEventListener("close", () => {
       inner.remove(); // Remove the dialog from the DOM
+      tinymce.remove();
     });
 
     inner.showModal();
 
-    // Now we'll test for permissions
-    // var thisPost = await repostDataManager.getPost(
-    //   e.target.closest("button").getAttribute("data-post-id")
-    // );
-    // var thisChannelAccessors =
-    //   (await repostDataManager
-    //     .getChannel(thisPost.channelID)
-    //     .accessors?.groups?.data?.map((g) => g.id)) ?? [];
-
-    // console.log("Repost: This post's accessors", thisChannelAccessors);
-
-    // for (const channel of channels) {
-    //   var channelData = await repostDataManager.getChannel(channel.id);
-
-    //   if (channelData?.accessors?.groups?.data) {
-    //     // Do we even have accessors?
-    //     var channelContainer = document.getElementById(
-    //       "channel-container-" + channel.id
-    //     );
-
-    //     var accessors = channelData.accessors.groups.data.map((g) => g.id);
-    //     console.log("Repost: Channel accessors", accessors);
-    //     if (!accessors.some((i) => thisChannelAccessors.includes(i))) {
-    //       // This channel has defined accessors, and none of them include any of this channel's accessors
-    //       channelContainer.classList.add("danger");
-    //     }
-
-    //     if (accessors.length > thisChannelAccessors.length) {
-    //       // This channel has more accessors than the original channel
-    //       channelContainer.classList.add("warning");
-    //     }
-    //   }
-    // }
   }
 
   async function repost(e) {
