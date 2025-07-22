@@ -159,6 +159,12 @@
       link_context_toolbar: true,
       minify: true,
       suffix: '.min',
+      setup: function (editor) {
+        editor.on('blur', function () {
+          editor.save(); // Writes back to the original <textarea>
+        })
+      },
+
 
       // This is the explicitly control where TinyMCE loads its plugins from
       // external_plugins: {
