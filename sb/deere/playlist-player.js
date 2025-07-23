@@ -9125,10 +9125,7 @@
         m = (0, r.useRef)(null),
         h = (0, r.useRef)(null),
         g = (e) => {
-          if ((console.log(e), h.current)) {
-            const n = document.createElement("li");
-            (n.textContent = e), h.current.appendChild(n);
-          }
+          console.log(e);
         };
       let [v, y] = (0, r.useState)(0);
       const b = () => {
