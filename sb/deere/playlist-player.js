@@ -1004,7 +1004,7 @@
           }
           return (e = e ? e.displayName || e.name : "") ? U(e) : "";
         }
-        function V(e) {
+        function $(e) {
           switch (e.tag) {
             case 5:
               return U(e.type);
@@ -1026,7 +1026,7 @@
               return "";
           }
         }
-        function $(e) {
+        function V(e) {
           if (null == e) return null;
           if ("function" == typeof e) return e.displayName || e.name || null;
           if ("string" == typeof e) return e;
@@ -1063,11 +1063,11 @@
               case L:
                 return null !== (n = e.displayName || null)
                   ? n
-                  : $(e.type) || "Memo";
+                  : V(e.type) || "Memo";
               case R:
                 (n = e._payload), (e = e._init);
                 try {
-                  return $(e(n));
+                  return V(e(n));
                 } catch (e) {}
             }
           return null;
@@ -1100,7 +1100,7 @@
             case 6:
               return "Text";
             case 16:
-              return $(n);
+              return V(n);
             case 8:
               return n === x ? "StrictMode" : "Mode";
             case 22:
@@ -1625,10 +1625,10 @@
               (Ie = !0), (Fe = e);
             },
           };
-        function Ve(e, n, t, r, l, a, o, u, i) {
+        function $e(e, n, t, r, l, a, o, u, i) {
           (Ie = !1), (Fe = null), Oe.apply(Ae, arguments);
         }
-        function $e(e) {
+        function Ve(e) {
           var n = e,
             t = e;
           if (e.alternate) for (; n.return; ) n = n.return;
@@ -1654,14 +1654,14 @@
           return null;
         }
         function He(e) {
-          if ($e(e) !== e) throw Error(a(188));
+          if (Ve(e) !== e) throw Error(a(188));
         }
         function Qe(e) {
           return null !==
             (e = (function (e) {
               var n = e.alternate;
               if (!n) {
-                if (null === (n = $e(e))) throw Error(a(188));
+                if (null === (n = Ve(e))) throw Error(a(188));
                 return n !== e ? null : e;
               }
               for (var t = e, r = n; ; ) {
@@ -1950,7 +1950,7 @@
         function Un(e) {
           var n = yl(e.target);
           if (null !== n) {
-            var t = $e(n);
+            var t = Ve(n);
             if (null !== t)
               if (13 === (n = t.tag)) {
                 if (null !== (n = Be(t)))
@@ -1983,7 +1983,7 @@
         function An(e, n, t) {
           jn(e) && t.delete(n);
         }
-        function Vn() {
+        function $n() {
           (Pn = !1),
             null !== zn && jn(zn) && (zn = null),
             null !== Tn && jn(Tn) && (Tn = null),
@@ -1991,28 +1991,28 @@
             Rn.forEach(An),
             Mn.forEach(An);
         }
-        function $n(e, n) {
+        function Vn(e, n) {
           e.blockedOn === n &&
             ((e.blockedOn = null),
             Pn ||
               ((Pn = !0),
-              l.unstable_scheduleCallback(l.unstable_NormalPriority, Vn)));
+              l.unstable_scheduleCallback(l.unstable_NormalPriority, $n)));
         }
         function Bn(e) {
           function n(n) {
-            return $n(n, e);
+            return Vn(n, e);
           }
           if (0 < Nn.length) {
-            $n(Nn[0], e);
+            Vn(Nn[0], e);
             for (var t = 1; t < Nn.length; t++) {
               var r = Nn[t];
               r.blockedOn === e && (r.blockedOn = null);
             }
           }
           for (
-            null !== zn && $n(zn, e),
-              null !== Tn && $n(Tn, e),
-              null !== Ln && $n(Ln, e),
+            null !== zn && Vn(zn, e),
+              null !== Tn && Vn(Tn, e),
+              null !== Ln && Vn(Ln, e),
               Rn.forEach(n),
               Mn.forEach(n),
               t = 0;
@@ -2090,7 +2090,7 @@
         var Yn = null;
         function Xn(e, n, t, r) {
           if (((Yn = null), null !== (e = yl((e = we(r))))))
-            if (null === (n = $e(e))) e = null;
+            if (null === (n = Ve(e))) e = null;
             else if (13 === (t = n.tag)) {
               if (null !== (e = Be(n))) return e;
               e = null;
@@ -2517,12 +2517,12 @@
               return !1;
           }
         }
-        function Vt(e) {
+        function $t(e) {
           return "object" == typeof (e = e.detail) && "data" in e
             ? e.data
             : null;
         }
-        var $t = !1,
+        var Vt = !1,
           Bt = {
             color: !0,
             date: !0,
@@ -2886,7 +2886,7 @@
           var r = e.type || "unknown-event";
           (e.currentTarget = t),
             (function (e, n, t, r, l, o, u, i, s) {
-              if ((Ve.apply(this, arguments), Ie)) {
+              if (($e.apply(this, arguments), Ie)) {
                 if (!Ie) throw Error(a(198));
                 var c = Fe;
                 (Ie = !1), (Fe = null), Ue || ((Ue = !0), (je = c));
@@ -2936,16 +2936,16 @@
           var r = 0;
           n && (r |= 4), Br(t, e, r, n);
         }
-        var Vr = "_reactListening" + Math.random().toString(36).slice(2);
-        function $r(e) {
-          if (!e[Vr]) {
-            (e[Vr] = !0),
+        var $r = "_reactListening" + Math.random().toString(36).slice(2);
+        function Vr(e) {
+          if (!e[$r]) {
+            (e[$r] = !0),
               o.forEach(function (n) {
                 "selectionchange" !== n &&
                   (Ir.has(n) || Ar(n, !1, e), Ar(n, !0, e));
               });
             var n = 9 === e.nodeType ? e : e.ownerDocument;
-            null === n || n[Vr] || ((n[Vr] = !0), Ar("selectionchange", !1, n));
+            null === n || n[$r] || ((n[$r] = !0), Ar("selectionchange", !1, n));
           }
         }
         function Br(e, n, t, r) {
@@ -3129,7 +3129,7 @@
                         (s = (s = t.relatedTarget || t.toElement)
                           ? yl(s)
                           : null) &&
-                        (s !== (f = $e(s)) || (5 !== s.tag && 6 !== s.tag)) &&
+                        (s !== (f = Ve(s)) || (5 !== s.tag && 6 !== s.tag)) &&
                         (s = null))
                     : ((i = null), (s = r)),
                   i !== s))
@@ -3240,7 +3240,7 @@
                   b = void 0;
                 }
               else
-                $t
+                Vt
                   ? At(e, t) && (b = "onCompositionEnd")
                   : "keydown" === e &&
                     229 === t.keyCode &&
@@ -3248,19 +3248,19 @@
               b &&
                 (Ft &&
                   "ko" !== t.locale &&
-                  ($t || "onCompositionStart" !== b
-                    ? "onCompositionEnd" === b && $t && (y = nt())
+                  (Vt || "onCompositionStart" !== b
+                    ? "onCompositionEnd" === b && Vt && (y = nt())
                     : ((Jn = "value" in (Zn = l) ? Zn.value : Zn.textContent),
-                      ($t = !0))),
+                      (Vt = !0))),
                 0 < (v = Wr(r, b)).length &&
                   ((b = new kt(b, e, null, t, l)),
                   o.push({ event: b, listeners: v }),
-                  (y || null !== (y = Vt(t))) && (b.data = y))),
+                  (y || null !== (y = $t(t))) && (b.data = y))),
                 (y = It
                   ? (function (e, n) {
                       switch (e) {
                         case "compositionend":
-                          return Vt(n);
+                          return $t(n);
                         case "keypress":
                           return 32 !== n.which ? null : ((jt = !0), Ut);
                         case "textInput":
@@ -3270,9 +3270,9 @@
                       }
                     })(e, t)
                   : (function (e, n) {
-                      if ($t)
+                      if (Vt)
                         return "compositionend" === e || (!Dt && At(e, n))
-                          ? ((e = nt()), (et = Jn = Zn = null), ($t = !1), e)
+                          ? ((e = nt()), (et = Jn = Zn = null), (Vt = !1), e)
                           : null;
                       switch (e) {
                         case "paste":
@@ -3535,10 +3535,10 @@
         var Ul = null,
           jl = !1,
           Al = !1;
-        function Vl(e) {
+        function $l(e) {
           null === Ul ? (Ul = [e]) : Ul.push(e);
         }
-        function $l() {
+        function Vl() {
           if (!Al && null !== Ul) {
             Al = !0;
             var e = 0,
@@ -3553,7 +3553,7 @@
               }
               (Ul = null), (jl = !1);
             } catch (n) {
-              throw (null !== Ul && (Ul = Ul.slice(e + 1)), qe(Je, $l), n);
+              throw (null !== Ul && (Ul = Ul.slice(e + 1)), qe(Je, Vl), n);
             } finally {
               (kn = n), (Al = !1);
             }
@@ -4233,7 +4233,7 @@
             (t |= r &= e.pendingLanes), (n.lanes = t), bn(e, t);
           }
         }
-        function Va(e, n) {
+        function $a(e, n) {
           var t = e.updateQueue,
             r = e.alternate;
           if (null !== r && t === (r = r.updateQueue)) {
@@ -4269,7 +4269,7 @@
             : (e.next = n),
             (t.lastBaseUpdate = n);
         }
-        function $a(e, n, t, r) {
+        function Va(e, n, t, r) {
           var l = e.updateQueue;
           Oa = !1;
           var a = l.firstBaseUpdate,
@@ -4760,8 +4760,8 @@
             Do(4, 4, jo.bind(null, n, e), t)
           );
         }
-        function Vo() {}
-        function $o(e, n) {
+        function $o() {}
+        function Vo(e, n) {
           var t = bo();
           n = void 0 === n ? null : n;
           var r = t.memoizedState;
@@ -4933,7 +4933,7 @@
               return (e = { current: e }), (yo().memoizedState = e);
             },
             useState: To,
-            useDebugValue: Vo,
+            useDebugValue: $o,
             useDeferredValue: function (e) {
               return (yo().memoizedState = e);
             },
@@ -4984,7 +4984,7 @@
           },
           eu = {
             readContext: Ta,
-            useCallback: $o,
+            useCallback: Vo,
             useContext: Ta,
             useEffect: Io,
             useImperativeHandle: Ao,
@@ -4996,7 +4996,7 @@
             useState: function () {
               return wo(ko);
             },
-            useDebugValue: Vo,
+            useDebugValue: $o,
             useDeferredValue: function (e) {
               return Ho(bo(), uo.memoizedState, e);
             },
@@ -5010,7 +5010,7 @@
           },
           nu = {
             readContext: Ta,
-            useCallback: $o,
+            useCallback: Vo,
             useContext: Ta,
             useEffect: Io,
             useImperativeHandle: Ao,
@@ -5022,7 +5022,7 @@
             useState: function () {
               return So(ko);
             },
-            useDebugValue: Vo,
+            useDebugValue: $o,
             useDeferredValue: function (e) {
               var n = bo();
               return null === uo
@@ -5052,7 +5052,7 @@
         }
         var lu = {
           isMounted: function (e) {
-            return !!(e = e._reactInternals) && $e(e) === e;
+            return !!(e = e._reactInternals) && Ve(e) === e;
           },
           enqueueSetState: function (e, n, t) {
             e = e._reactInternals;
@@ -5143,7 +5143,7 @@
               "function" == typeof l.UNSAFE_componentWillMount &&
                 l.UNSAFE_componentWillMount(),
               n !== l.state && lu.enqueueReplaceState(l, l.state, null),
-              $a(e, t, l, r),
+              Va(e, t, l, r),
               (l.state = e.memoizedState)),
             "function" == typeof l.componentDidMount && (e.flags |= 4194308);
         }
@@ -5152,7 +5152,7 @@
             var t = "",
               r = n;
             do {
-              (t += V(r)), (r = r.return);
+              (t += $(r)), (r = r.return);
             } while (r);
             var l = t;
           } catch (e) {
@@ -5404,7 +5404,7 @@
               (Oa = !1);
             var d = n.memoizedState;
             (o.state = d),
-              $a(n, r, o, l),
+              Va(n, r, o, l),
               (i = n.memoizedState),
               u !== r || d !== i || zl.current || Oa
                 ? ("function" == typeof c &&
@@ -5452,7 +5452,7 @@
               (Oa = !1),
               (d = n.memoizedState),
               (o.state = d),
-              $a(n, r, o, l);
+              Va(n, r, o, l);
             var m = n.memoizedState;
             u !== f || d !== m || zl.current || Oa
               ? ("function" == typeof p &&
@@ -5740,7 +5740,7 @@
           var r = e.alternate;
           null !== r && (r.lanes |= n), Na(e.return, n, t);
         }
-        function Vu(e, n, t, r, l) {
+        function $u(e, n, t, r, l) {
           var a = e.memoizedState;
           null === a
             ? (e.memoizedState = {
@@ -5758,7 +5758,7 @@
               (a.tail = t),
               (a.tailMode = l));
         }
-        function $u(e, n, t) {
+        function Vu(e, n, t) {
           var r = n.pendingProps,
             l = r.revealOrder,
             a = r.tail;
@@ -5791,7 +5791,7 @@
                 null === (t = l)
                   ? ((l = n.child), (n.child = null))
                   : ((l = t.sibling), (t.sibling = null)),
-                  Vu(n, !1, l, t, a);
+                  $u(n, !1, l, t, a);
                 break;
               case "backwards":
                 for (t = null, l = n.child, n.child = null; null !== l; ) {
@@ -5801,10 +5801,10 @@
                   }
                   (e = l.sibling), (l.sibling = t), (t = l), (l = e);
                 }
-                Vu(n, !0, t, null, a);
+                $u(n, !0, t, null, a);
                 break;
               case "together":
-                Vu(n, !1, null, null, void 0);
+                $u(n, !1, null, null, void 0);
                 break;
               default:
                 n.memoizedState = null;
@@ -6187,7 +6187,7 @@
               return (
                 Xa(),
                 Ru(e, n),
-                null === e && $r(n.stateNode.containerInfo),
+                null === e && Vr(n.stateNode.containerInfo),
                 Wu(n),
                 null
               );
@@ -6247,7 +6247,7 @@
                       e = e.sibling;
                     }
                   null !== o.tail &&
-                    Ge() > $i &&
+                    Ge() > Vi &&
                     ((n.flags |= 128),
                     (r = !0),
                     Qu(o, !1),
@@ -6269,7 +6269,7 @@
                     )
                       return Wu(n), null;
                   } else
-                    2 * Ge() - o.renderingStartTime > $i &&
+                    2 * Ge() - o.renderingStartTime > Vi &&
                       1073741824 !== t &&
                       ((n.flags |= 128),
                       (r = !0),
@@ -6838,7 +6838,7 @@
                   !o ||
                     (null !== l.alternate &&
                       null !== l.alternate.memoizedState) ||
-                    (Vi = Ge())),
+                    ($i = Ge())),
                 4 & r && mi(e);
               break;
             case 22:
@@ -7200,8 +7200,8 @@
           Ui = 0,
           ji = null,
           Ai = null,
-          Vi = 0,
-          $i = 1 / 0,
+          $i = 0,
+          Vi = 1 / 0,
           Bi = null,
           Hi = !1,
           Qi = null,
@@ -7236,7 +7236,7 @@
               1 === t &&
                 0 === Ni &&
                 !(1 & n.mode) &&
-                (($i = Ge() + 500), jl && $l()));
+                ((Vi = Ge() + 500), jl && Vl()));
         }
         function rs(e, n) {
           var t = e.callbackNode;
@@ -7267,11 +7267,11 @@
             if ((null != t && Ke(t), 1 === n))
               0 === e.tag
                 ? (function (e) {
-                    (jl = !0), Vl(e);
+                    (jl = !0), $l(e);
                   })(is.bind(null, e))
-                : Vl(is.bind(null, e)),
+                : $l(is.bind(null, e)),
                 ol(function () {
-                  !(6 & Ni) && $l();
+                  !(6 & Ni) && Vl();
                 }),
                 (t = null);
             else {
@@ -7308,7 +7308,7 @@
             var o = ms();
             for (
               (zi === e && Li === n) ||
-              ((Bi = null), ($i = Ge() + 500), ds(e, n));
+              ((Bi = null), (Vi = Ge() + 500), ds(e, n));
               ;
 
             )
@@ -7382,7 +7382,7 @@
                 case 3:
                   if (
                     (us(e, r),
-                    (130023424 & r) === r && 10 < (n = Vi + 500 - Ge()))
+                    (130023424 & r) === r && 10 < (n = $i + 500 - Ge()))
                   ) {
                     if (0 !== pn(e, 0)) break;
                     if (((l = e.suspendedLanes) & r) !== r) {
@@ -7482,7 +7482,7 @@
           try {
             return e(n);
           } finally {
-            0 === (Ni = t) && (($i = Ge() + 500), jl && $l());
+            0 === (Ni = t) && ((Vi = Ge() + 500), jl && Vl());
           }
         }
         function cs(e) {
@@ -7494,7 +7494,7 @@
           try {
             if (((Pi.transition = null), (kn = 1), e)) return e();
           } finally {
-            (kn = r), (Pi.transition = t), !(6 & (Ni = n)) && $l();
+            (kn = r), (Pi.transition = t), !(6 & (Ni = n)) && Vl();
           }
         }
         function fs() {
@@ -7639,7 +7639,7 @@
                       (o.flags |= 65536),
                         (n &= -n),
                         (o.lanes |= n),
-                        Va(o, pu(0, s, n));
+                        $a(o, pu(0, s, n));
                       break e;
                     case 1:
                       i = s;
@@ -7657,7 +7657,7 @@
                         (o.flags |= 65536),
                           (n &= -n),
                           (o.lanes |= n),
-                          Va(o, mu(o, i, n));
+                          $a(o, mu(o, i, n));
                         break e;
                       }
                   }
@@ -7948,7 +7948,7 @@
                       ? Xi++
                       : ((Xi = 0), (Gi = e))
                     : (Xi = 0),
-                  $l();
+                  Vl();
               })(e, n, t, r);
           } finally {
             (Pi.transition = l), (kn = r);
@@ -8066,7 +8066,7 @@
                 }
                 if (
                   ((Ni = l),
-                  $l(),
+                  Vl(),
                   an && "function" == typeof an.onPostCommitFiberRoot)
                 )
                   try {
@@ -8118,7 +8118,7 @@
             zi === e &&
               (Li & t) === t &&
               (4 === Di ||
-              (3 === Di && (130023424 & Li) === Li && 500 > Ge() - Vi)
+              (3 === Di && (130023424 & Li) === Li && 500 > Ge() - $i)
                 ? ds(e, 0)
                 : (Ui |= t)),
             rs(e, n);
@@ -8345,10 +8345,10 @@
             e
           );
         }
-        function Vs(e) {
+        function $s(e) {
           if (!e) return Pl;
           e: {
-            if ($e((e = e._reactInternals)) !== e || 1 !== e.tag)
+            if (Ve((e = e._reactInternals)) !== e || 1 !== e.tag)
               throw Error(a(170));
             var n = e;
             do {
@@ -8372,9 +8372,9 @@
           }
           return n;
         }
-        function $s(e, n, t, r, l, a, o, u, i) {
+        function Vs(e, n, t, r, l, a, o, u, i) {
           return (
-            ((e = As(t, r, !0, e, 0, a, 0, u, i)).context = Vs(null)),
+            ((e = As(t, r, !0, e, 0, a, 0, u, i)).context = $s(null)),
             (t = e.current),
             ((a = Ua((r = es()), (l = ns(t)))).callback = null != n ? n : null),
             ja(t, a, l),
@@ -8389,7 +8389,7 @@
             a = es(),
             o = ns(l);
           return (
-            (t = Vs(t)),
+            (t = $s(t)),
             null === n.context ? (n.context = t) : (n.pendingContext = t),
             ((n = Ua(a, o)).payload = { element: e }),
             null !== (r = void 0 === r ? null : r) && (n.callback = r),
@@ -8449,7 +8449,7 @@
                         break;
                       case 19:
                         if (((r = !!(t & n.childLanes)), 128 & e.flags)) {
-                          if (r) return $u(e, n, t);
+                          if (r) return Vu(e, n, t);
                           n.flags |= 128;
                         }
                         if (
@@ -8557,7 +8557,7 @@
                 (r = n.pendingProps),
                   (l = (o = n.memoizedState).element),
                   Fa(e, n),
-                  $a(n, r, null, t);
+                  Va(n, r, null, t);
                 var u = n.memoizedState;
                 if (((r = u.element), o.isDehydrated)) {
                   if (
@@ -8741,7 +8741,7 @@
                 Nu(null, n, r, !0, e, t)
               );
             case 19:
-              return $u(e, n, t);
+              return Vu(e, n, t);
             case 22:
               return xu(e, n, t);
           }
@@ -8798,11 +8798,11 @@
                     a.call(e);
                   };
                 }
-                var o = $s(n, r, e, 0, null, !1, 0, "", Zs);
+                var o = Vs(n, r, e, 0, null, !1, 0, "", Zs);
                 return (
                   (e._reactRootContainer = o),
                   (e[ml] = o.current),
-                  $r(8 === e.nodeType ? e.parentNode : e),
+                  Vr(8 === e.nodeType ? e.parentNode : e),
                   cs(),
                   o
                 );
@@ -8819,7 +8819,7 @@
               return (
                 (e._reactRootContainer = i),
                 (e[ml] = i.current),
-                $r(8 === e.nodeType ? e.parentNode : e),
+                Vr(8 === e.nodeType ? e.parentNode : e),
                 cs(function () {
                   Bs(n, i, t, r);
                 }),
@@ -8867,7 +8867,7 @@
                   0 !== t &&
                     (bn(n, 1 | t),
                     rs(n, Ge()),
-                    !(6 & Ni) && (($i = Ge() + 500), $l()));
+                    !(6 & Ni) && ((Vi = Ge() + 500), Vl()));
                 }
                 break;
               case 13:
@@ -9016,7 +9016,7 @@
                 void 0 !== n.onRecoverableError && (l = n.onRecoverableError)),
               (n = As(e, 1, !1, null, 0, t, 0, r, l)),
               (e[ml] = n.current),
-              $r(8 === e.nodeType ? e.parentNode : e),
+              Vr(8 === e.nodeType ? e.parentNode : e),
               new Ks(n)
             );
           }),
@@ -9048,9 +9048,9 @@
                 (!0 === t.unstable_strictMode && (l = !0),
                 void 0 !== t.identifierPrefix && (o = t.identifierPrefix),
                 void 0 !== t.onRecoverableError && (u = t.onRecoverableError)),
-              (n = $s(n, null, e, 1, null != t ? t : null, l, 0, o, u)),
+              (n = Vs(n, null, e, 1, null != t ? t : null, l, 0, o, u)),
               (e[ml] = n.current),
-              $r(e),
+              Vr(e),
               r)
             )
               for (e = 0; e < r.length; e++)
@@ -9111,303 +9111,341 @@
   }
   var r = t(540),
     l = t(338);
-  const a = (e) => {
-    let { url: n, contentLanguage: t } = e;
-    const [l, a] = (0, r.useState)([]),
-      o = (0, r.useRef)(null),
-      u = (0, r.useRef)(null),
-      i = (0, r.useRef)(null),
-      s = (0, r.useRef)(null),
-      c = (0, r.useRef)(null),
-      f = (0, r.useRef)(null),
-      d = (0, r.useRef)(null),
-      p = (0, r.useRef)(null);
-    let [m, h] = (0, r.useState)(0);
-    const g = () => {
-        const e = u.current;
-        if (e.duration && p.current) {
-          const n = Math.floor(e.duration / 60),
-            t = Math.floor(e.duration % 60);
-          p.current.innerText = `${n}:${t.toString().padStart(2, "0")}`;
-        }
-      },
-      v = (e) => {
-        u.current &&
-          ((u.current.playbackRate = u.current.playbackRate + e), y());
-      },
-      y = () => {
-        u.current &&
-          (c.current.innerText = u.current.playbackRate.toFixed(1) + "x");
-      },
-      b = () => {
-        var e,
-          n = u.current.src,
-          t = l.findIndex((e) => e.url === n);
-        (e = -1 !== t && t + 1 < l.length ? l[t + 1] : null), k(e);
-      },
-      k = (e) => {
-        const n = u.current;
-        if (!n) return;
-        (n.src = e.url),
-          i.current && (i.current.innerHTML = '"' + e.title + '"'),
-          n.addEventListener("loadedmetadata", g);
-        const t = l.findIndex((n) => n.url === e.url);
-        d.current && (d.current.disabled = t <= 0),
-          f.current && (f.current.disabled = t >= l.length - 1),
-          y();
-      },
-      w = () => {
-        u.current.play(), y();
-      },
-      S = () => {
-        console.log("Stopping all audio elements on the page"),
-          document.querySelectorAll("audio").forEach((e) => {
-            e.pause(), (e.currentTime = 0);
-          });
-      };
-    return (
-      (0, r.useEffect)(() => {
-        const e = () => {
-          console.log("Page is unloading. Stopping audio playback."),
-            S(),
-            u.current && (u.current.pause(), (u.current.src = ""));
+  const a = "https://jdonline.deere.com",
+    o = (e) => {
+      let { url: n, contentLanguage: t } = e;
+      const [l, o] = (0, r.useState)([]),
+        u = (0, r.useRef)(null),
+        i = (0, r.useRef)(null),
+        s = (0, r.useRef)(null),
+        c = (0, r.useRef)(null),
+        f = (0, r.useRef)(null),
+        d = (0, r.useRef)(null),
+        p = (0, r.useRef)(null),
+        m = (0, r.useRef)(null),
+        h = (0, r.useRef)(null),
+        g = (e) => {
+          if ((console.log(e), h.current)) {
+            const n = document.createElement("li");
+            (n.textContent = e), h.current.appendChild(n);
+          }
         };
-        return (
-          window.addEventListener("beforeunload", e),
-          window.addEventListener("pagehide", e),
-          () => {
-            console.log("Unmounting. Stopping audio playback."),
-              S(),
-              u.current && (u.current.pause(), (u.current.src = "")),
-              window.removeEventListener("beforeunload", e),
-              window.removeEventListener("pagehide", e);
+      let [v, y] = (0, r.useState)(0);
+      const b = () => {
+          const e = i.current;
+          if (e.duration && m.current) {
+            const n = Math.floor(e.duration / 60),
+              t = Math.floor(e.duration % 60);
+            m.current.innerText = `${n}:${t.toString().padStart(2, "0")}`;
           }
-        );
-      }, []),
-      (0, r.useEffect)(async () => {
-        if (n)
-          u.current.addEventListener("loadedmetadata", g),
-            y(),
-            (u.current.src = n),
-            (f.current.style.display = "none"),
-            (d.current.style.display = "none"),
-            (o.current.style.display = "none");
-        else {
-          await (function (e) {
-            let n =
-              arguments.length > 1 && void 0 !== arguments[1]
-                ? arguments[1]
-                : 5e3;
-            return new Promise((t, r) => {
-              const l = Date.now(),
-                a = setInterval(() => {
-                  const o = document.querySelector(e);
-                  o
-                    ? (clearInterval(a), t(o))
-                    : Date.now() - l > n &&
-                      (clearInterval(a),
-                      r(
-                        new Error(
-                          `Element ${e} did not appear within the timeout.`
-                        )
-                      ));
-                }, 100);
+        },
+        k = (e) => {
+          i.current &&
+            ((i.current.playbackRate = i.current.playbackRate + e), w());
+        },
+        w = () => {
+          i.current &&
+            (f.current.innerText = i.current.playbackRate.toFixed(1) + "x");
+        },
+        S = () => {
+          var e,
+            n = i.current.src,
+            t = l.findIndex((e) => e.url === n);
+          (e = -1 !== t && t + 1 < l.length ? l[t + 1] : null), E(e);
+        },
+        E = (e) => {
+          const n = i.current;
+          if (!n) return;
+          (n.src = e.url),
+            s.current && (s.current.innerHTML = '"' + e.title + '"'),
+            n.addEventListener("loadedmetadata", b);
+          const t = l.findIndex((n) => n.url === e.url);
+          p.current && (p.current.disabled = t <= 0),
+            d.current && (d.current.disabled = t >= l.length - 1),
+            w();
+        },
+        x = () => {
+          i.current.play(), w();
+        },
+        C = () => {
+          g("Stopping all audio elements on the page"),
+            document.querySelectorAll("audio").forEach((e) => {
+              e.pause(), (e.currentTime = 0);
             });
-          })("article[data-channel-id]");
-          const e = document
-            .querySelector("article[data-channel-id]")
-            ?.getAttribute("data-channel-id");
-          console.log("Channel ID: ", e);
-          const n = await fetch(`/api/channels/${e}/posts?sort=created_DESC`),
-            t = await n.json();
-          console.log("Posts: ", t);
-          for (let e of t.data) {
-            const n = new DOMParser(),
-              t = e.contents.en_US.content,
-              r = n.parseFromString(t, "text/html"),
-              a = r.querySelector("playlist-player[url]")?.getAttribute("url");
-            l.push({
-              title: e.contents.en_US.title,
-              url: a,
-              published: e.published,
-            });
-          }
-          l.sort(
-            (e, n) =>
-              new Date(e.published).getTime() - new Date(n.published).getTime()
-          ),
-            a(l),
-            console.log("Playlist: ", l),
-            k(l[0]);
-        }
-      }, []),
-      r.createElement(
-        "div",
-        null,
-        r.createElement(
-          "div",
-          { ref: o },
-          r.createElement(
-            "label",
-            { style: { fontWeight: "bold" } },
-            "Currently playing: "
-          ),
-          r.createElement("span", { ref: i })
-        ),
+        };
+      return (
+        (0, r.useEffect)(() => {
+          const e = () => {
+            g("Page is unloading. Stopping audio playback."),
+              C(),
+              i.current && (i.current.pause(), (i.current.src = ""));
+          };
+          return (
+            window.addEventListener("beforeunload", e),
+            window.addEventListener("pagehide", e),
+            () => {
+              g("Unmounting. Stopping audio playback."),
+                C(),
+                i.current && (i.current.pause(), (i.current.src = "")),
+                window.removeEventListener("beforeunload", e),
+                window.removeEventListener("pagehide", e);
+            }
+          );
+        }, []),
+        (0, r.useEffect)(async () => {
+          if (n)
+            i.current.addEventListener("loadedmetadata", b),
+              w(),
+              (i.current.src = n),
+              (d.current.style.display = "none"),
+              (p.current.style.display = "none"),
+              (u.current.style.display = "none");
+          else
+            try {
+              await (function (e) {
+                let n =
+                  arguments.length > 1 && void 0 !== arguments[1]
+                    ? arguments[1]
+                    : 5e3;
+                return new Promise((t, r) => {
+                  const l = Date.now(),
+                    a = setInterval(() => {
+                      const o = document.querySelector(e);
+                      o
+                        ? (clearInterval(a), t(o))
+                        : Date.now() - l > n &&
+                          (clearInterval(a),
+                          r(
+                            new Error(
+                              `Element ${e} did not appear within the timeout.`
+                            )
+                          ));
+                    }, 100);
+                });
+              })("article[data-channel-id]");
+              const e = document
+                .querySelector("article[data-channel-id]")
+                ?.getAttribute("data-channel-id");
+              g("Channel ID: ");
+              const n = await (async function () {
+                  const e = await fetch(`${a}/auth/discover/`, {
+                      credentials: "include",
+                    }),
+                    n = (await e.json()).csrfToken;
+                  if (!n) throw new Error("CSRF token not found");
+                  return n;
+                })(),
+                t = await fetch(
+                  `${a}/api/channels/${e}/posts?sort=created_DESC`,
+                  {
+                    method: "GET",
+                    credentials: "include",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Accept: "application/json",
+                      "X-CSRF-Token": n,
+                    },
+                  }
+                ),
+                r = await t.json();
+              g("Posts: ");
+              for (let e of r.data) {
+                const n = new DOMParser(),
+                  t = e.contents.en_US.content,
+                  r = n.parseFromString(t, "text/html"),
+                  a = r
+                    .querySelector("playlist-player[url]")
+                    ?.getAttribute("url");
+                l.push({
+                  title: e.contents.en_US.title,
+                  url: a,
+                  published: e.published,
+                });
+              }
+              l.sort(
+                (e, n) =>
+                  new Date(e.published).getTime() -
+                  new Date(n.published).getTime()
+              ),
+                o(l),
+                g("Playlist: "),
+                E(l[0]);
+            } catch (e) {
+              g(e);
+            }
+        }, []),
         r.createElement(
           "div",
           null,
-          r.createElement("span", { ref: p }),
-          " •",
-          " ",
-          r.createElement("span", { ref: c })
-        ),
-        r.createElement(
-          "div",
-          {
-            ref: s,
-            onClick: (e) => {
-              if (u.current && s.current) {
-                const n = s.current.getBoundingClientRect(),
-                  t = ((e.clientX - n.left) / n.width) * u.current.duration;
-                (u.current.currentTime = t), h((t / u.current.duration) * 100);
+          r.createElement(
+            "div",
+            { ref: u },
+            r.createElement(
+              "label",
+              { style: { fontWeight: "bold" } },
+              "Currently playing: "
+            ),
+            r.createElement("span", { ref: s })
+          ),
+          r.createElement(
+            "div",
+            null,
+            r.createElement("span", { ref: m }),
+            " •",
+            " ",
+            r.createElement("span", { ref: f })
+          ),
+          r.createElement(
+            "div",
+            {
+              ref: c,
+              onClick: (e) => {
+                if (i.current && c.current) {
+                  const n = c.current.getBoundingClientRect(),
+                    t = ((e.clientX - n.left) / n.width) * i.current.duration;
+                  (i.current.currentTime = t),
+                    y((t / i.current.duration) * 100);
+                }
+              },
+              style: {
+                position: "relative",
+                height: "20px",
+                overflow: "hidden",
+                margin: "10px 0",
+                cursor: "pointer",
+                background: "#e4f4f3",
+              },
+            },
+            r.createElement("div", {
+              style: { height: "100%", width: `${v}%`, background: "#00b0b0" },
+            })
+          ),
+          r.createElement(
+            "div",
+            {
+              style: {
+                display: "flex",
+                marginBottom: "1em",
+                fontSize: "0.8rem;",
+                justifyContent: "flex-start",
+                gap: "1em",
+              },
+            },
+            r.createElement(
+              "button",
+              {
+                onClick: () => {
+                  i.current && (i.current.paused ? x() : i.current.pause());
+                },
+                style: { flex: 3 },
+                title: "Play/Pause",
+              },
+              r.createElement("span", null, "Play/Pause")
+            ),
+            r.createElement(
+              "button",
+              {
+                onClick: () => {
+                  k(0.1);
+                },
+                style: { flex: 1 },
+                title: "Play faster",
+              },
+              r.createElement("span", null, "Faster")
+            ),
+            r.createElement(
+              "button",
+              {
+                onClick: () => {
+                  k(-0.1);
+                },
+                style: { flex: 1 },
+                title: "Play slower",
+              },
+              r.createElement("span", null, "Slower")
+            )
+          ),
+          r.createElement(
+            "div",
+            {
+              style: {
+                display: "flex",
+                marginBottom: "1em",
+                fontSize: "0.8rem;",
+                justifyContent: "flex-start",
+                gap: "1em",
+              },
+            },
+            r.createElement(
+              "button",
+              {
+                onClick: () => {
+                  var e, n, t;
+                  (n = i.current.src),
+                    (t = l.findIndex((e) => e.url === n)),
+                    (e = t > 0 ? l[t - 1] : null),
+                    E(e),
+                    x();
+                },
+                ref: p,
+                title: "Previous track",
+              },
+              r.createElement("span", null, "Previous Track")
+            ),
+            r.createElement(
+              "button",
+              {
+                onClick: () => {
+                  i.current && (i.current.currentTime -= 15);
+                },
+                title: "Skip backward 15s",
+              },
+              r.createElement("span", null, "Skip Back")
+            ),
+            r.createElement(
+              "button",
+              {
+                onClick: () => {
+                  i.current && (i.current.currentTime += 15);
+                },
+                title: "Skip forward 15s",
+              },
+              r.createElement("span", null, "Skip Forward")
+            ),
+            r.createElement(
+              "button",
+              {
+                onClick: () => {
+                  S(), x();
+                },
+                ref: d,
+                title: "Next track",
+              },
+              r.createElement("span", null, "Next Track")
+            )
+          ),
+          r.createElement("audio", {
+            ref: i,
+            onTimeUpdate: () => {
+              if (i.current) {
+                const e = i.current.currentTime,
+                  n = i.current.duration || 0;
+                y((e / n) * 100);
               }
             },
-            style: {
-              position: "relative",
-              height: "20px",
-              overflow: "hidden",
-              margin: "10px 0",
-              cursor: "pointer",
-              background: "#e4f4f3",
+            onEnded: () => {
+              l.length > 0 && (S(), x());
             },
-          },
-          r.createElement("div", {
-            style: { height: "100%", width: `${m}%`, background: "#00b0b0" },
+          }),
+          r.createElement("ul", {
+            ref: h,
+            style: { listStyleType: "none", padding: 0 },
           })
-        ),
-        r.createElement(
-          "div",
-          {
-            style: {
-              display: "flex",
-              marginBottom: "1em",
-              fontSize: "0.8rem;",
-              justifyContent: "flex-start",
-              gap: "1em",
-            },
-          },
-          r.createElement(
-            "button",
-            {
-              onClick: () => {
-                u.current && (u.current.paused ? w() : u.current.pause());
-              },
-              style: { flex: 3 },
-              title: "Play/Pause",
-            },
-            r.createElement("span", null, "Play/Pause")
-          ),
-          r.createElement(
-            "button",
-            {
-              onClick: () => {
-                v(0.1);
-              },
-              style: { flex: 1 },
-              title: "Play faster",
-            },
-            r.createElement("span", null, "Faster")
-          ),
-          r.createElement(
-            "button",
-            {
-              onClick: () => {
-                v(-0.1);
-              },
-              style: { flex: 1 },
-              title: "Play slower",
-            },
-            r.createElement("span", null, "Slower")
-          )
-        ),
-        r.createElement(
-          "div",
-          {
-            style: {
-              display: "flex",
-              marginBottom: "1em",
-              fontSize: "0.8rem;",
-              justifyContent: "flex-start",
-              gap: "1em",
-            },
-          },
-          r.createElement(
-            "button",
-            {
-              onClick: () => {
-                var e, n, t;
-                (n = u.current.src),
-                  (t = l.findIndex((e) => e.url === n)),
-                  (e = t > 0 ? l[t - 1] : null),
-                  k(e),
-                  w();
-              },
-              ref: d,
-              title: "Previous track",
-            },
-            r.createElement("span", null, "Previous Track")
-          ),
-          r.createElement(
-            "button",
-            {
-              onClick: () => {
-                u.current && (u.current.currentTime -= 15);
-              },
-              title: "Skip backward 15s",
-            },
-            r.createElement("span", null, "Skip Back")
-          ),
-          r.createElement(
-            "button",
-            {
-              onClick: () => {
-                u.current && (u.current.currentTime += 15);
-              },
-              title: "Skip forward 15s",
-            },
-            r.createElement("span", null, "Skip Forward")
-          ),
-          r.createElement(
-            "button",
-            {
-              onClick: () => {
-                b(), w();
-              },
-              ref: f,
-              title: "Next track",
-            },
-            r.createElement("span", null, "Next Track")
-          )
-        ),
-        r.createElement("audio", {
-          ref: u,
-          onTimeUpdate: () => {
-            if (u.current) {
-              const e = u.current.currentTime,
-                n = u.current.duration || 0;
-              h((e / n) * 100);
-            }
-          },
-          onEnded: () => {
-            l.length > 0 && (b(), w());
-          },
-        })
-      )
-    );
-  };
-  var o = JSON.parse('{"rE":"1.0.0","cy":""}');
-  function u(e, n) {
+        )
+      );
+    };
+  var u = JSON.parse('{"rE":"1.0.0","cy":""}');
+  function i(e, n) {
     var t = Object.keys(e);
     if (Object.getOwnPropertySymbols) {
       var r = Object.getOwnPropertySymbols(e);
@@ -9419,22 +9457,22 @@
     }
     return t;
   }
-  function i(e) {
+  function s(e) {
     for (var n = 1; n < arguments.length; n++) {
       var t = null != arguments[n] ? arguments[n] : {};
       n % 2
-        ? u(Object(t), !0).forEach(function (n) {
-            s(e, n, t[n]);
+        ? i(Object(t), !0).forEach(function (n) {
+            c(e, n, t[n]);
           })
         : Object.getOwnPropertyDescriptors
         ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t))
-        : u(Object(t)).forEach(function (n) {
+        : i(Object(t)).forEach(function (n) {
             Object.defineProperty(e, n, Object.getOwnPropertyDescriptor(t, n));
           });
     }
     return e;
   }
-  function s(e, n, t) {
+  function c(e, n, t) {
     return (
       (n = (function (e) {
         var n = (function (e) {
@@ -9459,27 +9497,27 @@
       e
     );
   }
-  const c = ["url"],
-    f = {
+  const f = ["url"],
+    d = {
       name: "playlist-player",
       factory: (e, n) =>
         class extends e {
           constructor() {
-            super(), s(this, "_root", null);
+            super(), c(this, "_root", null);
           }
           get props() {
-            return i(
-              i({}, this.parseAttributes()),
+            return s(
+              s({}, this.parseAttributes()),
               {},
               { contentLanguage: this.contentLanguage }
             );
           }
           renderBlock(e) {
             (this._root ??= l.createRoot(e)),
-              this._root.render(r.createElement(a, this.props));
+              this._root.render(r.createElement(o, this.props));
           }
           static get observedAttributes() {
-            return c;
+            return f;
           }
           attributeChangedCallback() {
             for (var e = arguments.length, n = new Array(e), t = 0; t < e; t++)
@@ -9487,7 +9525,7 @@
             super.attributeChangedCallback.apply(this, n);
           }
         },
-      attributes: c,
+      attributes: f,
       blockLevel: "block",
       configurationSchema: {
         properties: { url: { type: "string", title: "url" } },
@@ -9499,6 +9537,6 @@
       iconUrl:
         "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPmRvdDwvdGl0bGU+DQo8cGF0aCBkPSJNMTIgMjRDMTguNjI3NCAyNCAyNCAxOC42Mjc0IDI0IDEyQzI0IDUuMzcyNTggMTguNjI3NCAwIDEyIDBDNS4zNzI1OCAwIDAgNS4zNzI1OCAwIDEyQzAgMTguNjI3NCA1LjM3MjU4IDI0IDEyIDI0WiIgLz4NCjwvc3ZnPg0K",
     },
-    d = { blockDefinition: f, author: o.cy, version: o.rE };
-  window.defineBlock(d);
+    p = { blockDefinition: d, author: u.cy, version: u.rE };
+  window.defineBlock(p);
 })();
