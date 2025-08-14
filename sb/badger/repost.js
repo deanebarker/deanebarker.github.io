@@ -5,7 +5,7 @@
   const BUTTON_NAME = "Repost";
   const BASE_TINY_MCE_URL = "https://deanebarker.github.io/tinymce/";
 
-  let tinymce = null;
+  //let tinymce = null;
 
   function addScript() {
     document.addScriptLink(BASE_TINY_MCE_URL + "tinymce.min.js");
