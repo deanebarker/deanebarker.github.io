@@ -3,8 +3,7 @@
 
   const SOCIAL_ACTIONS_QUERY = ".news-feed-post-social-actions";
   const BUTTON_NAME = "Repost";
-  const BASE_TINY_MCE_URL =
-    "https://deanebarker.github.io/tinymce/";
+  const BASE_TINY_MCE_URL = "https://deanebarker.github.io/tinymce/";
 
   let tinymce = null;
 
@@ -160,24 +159,22 @@
       base_url: BASE_TINY_MCE_URL,
       link_context_toolbar: true,
       minify: true,
-      suffix: '.min',
+      suffix: ".min",
       setup: function (editor) {
         console.log("Repost: TinyMCE editor setup", editor);
-        editor.on('blur', function () {
+        editor.on("blur", function () {
           console.log("Repost: Saving TinyMCE content on blur");
           console.log(editor.save()); // Writes back to the original <textarea>
           console.log(editor.getContent()); // Get the content
           console.log(document.getElementById("repostField-content").value);
-        })
+        });
       },
-
 
       // This is the explicitly control where TinyMCE loads its plugins from
       // external_plugins: {
       //   link: 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.9.1/plugins/link/plugin.min.js',
       //   lists: 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.6.1/plugins/lists/plugin.js'
       // }
-  
 
       // This is a hack to fix a weird bug that puts TinyMCE's dialogs underneath the DIALOG element that spawned it
       init_instance_callback: function (editor) {
@@ -192,7 +189,9 @@
       },
     };
     console.log("Repost: TinyMCE config", config);
-    tinymce.remove(); // Remove any existing TinyMCE instances
+    if (tinymce) {
+      tinymce.remove(); // Remove any existing TinyMCE instances
+    }
     tinymce.init(config);
 
     inner.addEventListener("close", () => {
@@ -201,7 +200,6 @@
     });
 
     inner.showModal();
-
   }
 
   async function repost(e) {
